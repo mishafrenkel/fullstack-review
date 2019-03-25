@@ -3,6 +3,10 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
+  current_user_url: String, 
+  current_user_authorizations_html_url: String, 
+  user_url: String, 
+  repository_url: String \
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
@@ -14,3 +18,5 @@ let save = (/* TODO */) => {
 }
 
 module.exports.save = save;
+
+
