@@ -16,9 +16,17 @@ class App extends React.Component {
   search (term) {
     console.log(`${term} was searched`);
     $.ajax({
-      
-    })
-    
+      url: 'http://localhost:1128/repos/import',
+      type: 'POST',
+      data: JSON.stringify({"username": `${term}`}), 
+      contentType: 'application/json',
+      success: (data) => {
+        console.log("Client-Server POST success!!!");
+      },
+      error: (request, error) => {
+        console.error('Request ' + JSON.stringify(request));
+      }
+    });
   }
 
   render () {
@@ -30,4 +38,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, 
+  document.getElementById('app')
+);
